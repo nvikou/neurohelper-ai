@@ -1,0 +1,13 @@
+<<<<<<< HEAD
+fastapi==0.111.*
+uvicorn[standard]==0.30.*
+pydantic==2.*
+openai>=1.40.0
+itsdangerous>=2.2
+=======
+fastapi
+uvicorn[standard]
+pydantic
+openai
+itsdangerous
+>>>>>>> 2e92c2f (NeuroHelper)

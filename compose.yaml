@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+<<<<<<< HEAD
+    env_file: .env
+=======
+    env_file:
+      - .env
+>>>>>>> 2e92c2f (NeuroHelper)
+    ports:
+      - "${PUBLIC_PORT:-8080}:8000"
+    restart: unless-stopped
