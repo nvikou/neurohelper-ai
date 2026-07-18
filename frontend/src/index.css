@@ -1,6 +1,4 @@
 @import "tailwindcss";
-<<<<<<< HEAD
-=======
 
 :root {
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -19,4 +17,3 @@ body,
   margin: 0;
   height: 100%;
 }
->>>>>>> 2e92c2f (NeuroHelper)

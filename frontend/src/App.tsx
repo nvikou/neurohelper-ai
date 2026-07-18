@@ -1,75 +1,3 @@
-<<<<<<< HEAD
-import React, { useEffect, useState } from 'react'
-import ChatList from './components/ChatList'
-import ChatWindow from './components/ChatWindow'
-import ModelSelect from './components/ModelSelect'
-import SystemPrompt from './components/SystemPrompt'
-import { getChats, createChat, updateChat, deleteChat, type ChatRef, resetSession } from './api'
-
-export default function App() {
-  const [chats, setChats] = useState<ChatRef[]>([])
-  const [selectedChatId, setSelectedChatId] = useState<string>()
-  const [model, setModel] = useState<string>('gpt-4o-mini')
-  const [systemPrompt, setSystemPrompt] = useState<string>('')
-
-  async function load() {
-    const data = await getChats()
-    setChats(data)
-    if (data.length && !selectedChatId) setSelectedChatId(data[0].id)
-  }
-  useEffect(() => { load() }, [])
-
-  async function onCreate() {
-    const title = prompt('Название чата', 'Новый чат') || 'Новый чат'
-    const c = await createChat(title)
-    setChats(prev => [...prev, c])
-    setSelectedChatId(c.id)
-  }
-
-  async function onRename(id: string, title: string) {
-    const c = await updateChat(id, title)
-    setChats(prev => prev.map(x => x.id === id ? c : x))
-  }
-
-  async function onDelete(id: string) {
-    await deleteChat(id)
-    setChats(prev => prev.filter(x => x.id !== id))
-    if (selectedChatId === id) setSelectedChatId(undefined)
-  }
-
-  return (
-    <div className="h-screen grid grid-cols-[260px_1fr]">
-      <aside className="border-r border-zinc-800 p-3">
-        <ChatList
-          chats={chats}
-          selectedId={selectedChatId}
-          onSelect={setSelectedChatId}
-          onCreate={onCreate}
-          onRename={onRename}
-          onDelete={onDelete}
-        />
-        <div className="mt-4 flex gap-2">
-          <button className="text-xs bg-zinc-700 rounded-lg px-3 py-1"
-            onClick={() => { resetSession().then(() => { setChats([]); setSelectedChatId(undefined) }) }}>
-            Сброс сессии
-          </button>
-        </div>
-      </aside>
-      <main className="flex flex-col">
-        <header className="border-b border-zinc-800 p-3 flex items-center gap-3">
-          <ModelSelect model={model} onChange={setModel} />
-          <div className="flex-1" />
-        </header>
-        <section className="grid grid-rows-[auto_1fr] gap-3 p-3 h-[calc(100vh-57px)]">
-          <SystemPrompt value={systemPrompt} onChange={setSystemPrompt} />
-          <div className="min-h-0">
-            <ChatWindow chatId={selectedChatId} model={model} systemPrompt={systemPrompt} />
-          </div>
-        </section>
-      </main>
-    </div>
-  )
-=======
 import { useEffect, useState } from "react";
 
 import {
@@ -189,5 +117,4 @@ export default function App() {
       </aside>
     </div>
   );
->>>>>>> 2e92c2f (NeuroHelper)
 }

@@ -4,6 +4,8 @@ AI assistant that generates day plans, checklists, templates, and ideas using Op
 
 **Repository:** [nvikou/neurohelper-ai](https://github.com/nvikou/neurohelper-ai)
 
+![NeuroHelper UI](docs/neurohelper-ui.png)
+
 ---
 
 ## Features
